@@ -1,4 +1,4 @@
-#Jogo da Velha
+# Jogo da Velha
 Este é um psudocódigo de uma implementação simples do jogo da velha.
 
 ## Atenção
