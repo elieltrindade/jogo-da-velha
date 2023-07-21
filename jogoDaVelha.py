@@ -8,51 +8,6 @@ tab : vetor[1..3,1..3] de Inteiro
 l,c, cont, rodada, li, col, jog : inteiro
 R, vitoria, empate : logico
 
-// Mostra Título
-Procedimento titulo ()
-inicio
-EscrevaL("-----JOGO DA VELHA -----")
-EscrevaL()
-FimProcedimento
-
-// verifica resposta jogar ou não
-Procedimento respConvert()
-inicio
-Repita
-   Se (start <> "S") e (start <> "Sim") e (start <> "n") e (start <> "nao") entao
-      EscrevaL("Escolha invalida, [s/n]")
-   FimSe
-   Se (start = "S") ou (Start = "sim") entao
-      start <- "S"
-   senao
-      Se (start = "N") ou (start = "Nao") entao
-         start <- "N"
-      FimSe
-   FimSe
-ate (Start = "S") ou (start = "N")
-FimProcedimento
-
-//Mostra o Tabuleiro
-Procedimento tabuleiro()
-inicio
-EscrevaL("+---+---+---+")
-Para L <- 1 ate 3 faca
-   Para C <- 1 ate 3 faca
-      Se (tab[l,c] = 10) entao
-         Escreva("| O ")
-      senao
-         Se (tab[l,c] = 11) entao
-            Escreva("| X ")
-         senao
-            Escreva("|",tab[l,c]," ")
-         FimSe
-      FimSe
-   FimPara
-   Escreva("|")
-   EscrevaL("")
-   EscrevaL("+---+---+---+")
-FimPara
-FimProcedimento
 
 //Verifica o numero escolhido
 Procedimento verifica()
