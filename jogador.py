@@ -3,6 +3,8 @@ class Jogador:
         self.name = name
         self.char = char
         self.jogando = jogando
+        
+    
 
 
 

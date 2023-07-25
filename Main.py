@@ -11,7 +11,19 @@ def printLegenda(j1, j2):
 
 
 def trocaJogador(j1, j2):
-    pass
+    if not j1.jogando:
+        if not j2.jogando:
+            j1.jogando = True
+            return
+        elif not j1.jogando:
+            j2.jogando = False
+            j1.jogando = True
+            return
+    j1.jogando = False
+    j2.jogando = True
+
+
+
 
 def jogar(jogador):
     pass
@@ -42,3 +54,4 @@ printLegenda(j1, j2)
 tab.preencherCasa()
 tab.mostarTabuleiro()
 verificaGanhador(tab)
+trocaJogador(j1, j2)
