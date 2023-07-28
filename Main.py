@@ -1,5 +1,5 @@
-from tabuleiro import Tabuleiro
-from jogador import Jogador
+from classes import Tabuleiro
+from classes import Jogador
 
 
 def legenda(j1, j2):
@@ -12,41 +12,30 @@ def trocaJogador(j1, j2):
     if not j1.jogando:
         if not j2.jogando:
             j1.jogando = True
-            return
+            return j1
         elif not j1.jogando:
             j2.jogando = False
             j1.jogando = True
-            return
+            return j1
     j1.jogando = False
     j2.jogando = True
-
-
-
-
-
-def jogar(jogador):
-    pass
-
-
-def verificaGanhador(tab):
-    vitoria = False
-    if (tab.casa[0] == tab.casa[1] and tab.casa[1] == tab.casa[2]) or \
-            (tab.casa[0] == tab.casa[3] and tab.casa[3] == tab.casa[6]) or \
-            (tab.casa[0] == tab.casa[4] and tab.casa[4] == tab.casa[8]) or \
-            (tab.casa[1] == tab.casa[4] and tab.casa[4] == tab.casa[7]) or \
-            (tab.casa[2] == tab.casa[5] and tab.casa[5] == tab.casa[8]) or \
-            (tab.casa[2] == tab.casa[4] and tab.casa[4] == tab.casa[6]) or \
-            (tab.casa[3] == tab.casa[4] and tab.casa[4] == tab.casa[5]) or \
-            (tab.casa[6] == tab.casa[7] and tab.casa[7] == tab.casa[8]):
-        vitoria = True
-        return vitoria
+    return j2
 
 
 j1 = Jogador('Jogador 1', 'X')
 j2 = Jogador('Jogador 2', 'O')
-legenda(j1, j2)
-tab = Tabuleiro()
-tab.preencherCasa()
-tab.mostarTabuleiro()
-verificaGanhador(tab)
-trocaJogador(j1, j2)
+while True:
+    tab = Tabuleiro()
+    tab.preencherCasa()
+    while True:
+        legenda(j1, j2)
+        tab.mostarTabuleiro()
+        jogador = trocaJogador(j1, j2)
+        tab.escolherCasa(jogador)
+        if True == tab.verificaGanhador():
+            print(f'{jogador.name} {"Venceu"}')
+            break
+        if int not in tab.casa:
+            pass
+
+    restart = input("jogar novamente?")
