@@ -2,38 +2,38 @@ from classes import Tabuleiro, Jogador
 
 
 def legenda():
-    print(f'{"-"}{"JOGO DA VELHA"}{"-"}\n\n'
-          f'{j1.name:10}{" - "}{j1.char}\n'
-          f'{j2.name:10}{" - "}{j2.char}\n')
+    print(f'-{" JOGO DA VELHA "}-\n\n'
+          f'{jogador1.name:10} - {jogador1.char}\n'
+          f'{jogador2.name:10} - {jogador2.char}\n')
 
 
 def joga_primeiro():
-    if not j1.start:
-        if not j2.start:
-            j1.start = True
-            j1.jogando = True
-            return j1
-        elif not j1.start:
-            j2.start = False
-            j2.jogando = False
-            j1.start = True
-            j1.jogando = True
-            return j1
-    j1.start = False
-    j1.jogando = False
-    j2.start = True
-    j2.jogando = True
-    return j2
+    if not jogador1.start:
+        if not jogador2.start:
+            jogador1.start = True
+            jogador1.jogando = True
+            return jogador1
+        elif not jogador1.start:
+            jogador2.start = False
+            jogador2.jogando = False
+            jogador1.start = True
+            jogador1.jogando = True
+            return jogador1
+    jogador1.start = False
+    jogador1.jogando = False
+    jogador2.start = True
+    jogador2.jogando = True
+    return jogador2
 
 
 def troca_jogador():
-    if not j1.jogando:
-        j2.jogando = False
-        j1.jogando = True
-        return j1
-    j1.jogando = False
-    j2.jogando = True
-    return j2
+    if not jogador1.jogando:
+        jogador2.jogando = False
+        jogador1.jogando = True
+        return jogador1
+    jogador1.jogando = False
+    jogador2.jogando = True
+    return jogador2
 
 
 def restart():
@@ -50,8 +50,8 @@ def restart():
             print("não é uma opção válida")
 
 
-j1 = Jogador('Jogador 1', 'X')
-j2 = Jogador('Jogador 2', 'O')
+jogador1 = Jogador('Jogador 1', 'X')
+jogador2 = Jogador('Jogador 2', 'O')
 while True:
     tab = Tabuleiro()
     tab.preencher_casa()
@@ -61,9 +61,11 @@ while True:
         tab.mostar_tabuleiro()
         tab.escolher_casa(jogador)
         if tab.verifica_ganhador():
+            tab.mostar_tabuleiro()
             print(f'{jogador.name} {"Venceu"}')
             break
         if tab.rodada == 1:
+            tab.mostar_tabuleiro()
             print("Velha!!!")
             break
         tab.fim_rodada()

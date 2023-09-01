@@ -26,13 +26,19 @@ class Tabuleiro:
             try:
                 jogada = int(input(f'{jogador.name}{" -> "}{"Escolha uma casa: "}'))
 
-                if jogada not in self.casa:
-                    print("Casa indisponível")
+                if 1 <= jogada <= 9:
+                    if self.verifica_casa(jogada):
+                        self.casa[jogada - 1] = str(jogador.char)
+                        return
+                    else:
+                        print("A casa já ocupada, escolha outra.")
                 else:
-                    self.casa[jogada - 1] = str(jogador.char)
-                    return
+                    print("Número fora do intervalo válido (1 a 9). ")
             except ValueError:
-                print("insira um número disonível no tabuleiro")
+                print("Entrada inválida. Insira um número válido (1 a 9).")
+
+    def verifica_casa(self, jogada):
+        return jogada in self.casa
 
     def verifica_ganhador(self):
         if (self.casa[0] == self.casa[1] and self.casa[1] == self.casa[2]) or \
